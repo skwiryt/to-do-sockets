@@ -31,5 +31,11 @@ io.on('connection', (socket) => {
     console.log('tasks: ', tasks);
     socket.broadcast.emit('removeTask', id);
   });
+  socket.on('editTask', (task) => {
+    const index = tasks.findIndex(t => task.id === t.id);
+    tasks[index] = {id: task.id, name: task.name}
+    console.log('tasks: ', tasks);
+    socket.broadcast.emit('editTask', task);
+  });
 
 })

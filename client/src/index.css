@@ -69,8 +69,34 @@ p {
 }
 
 .task {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px dashed rgb(83, 83, 83);
+}
+
+.task span:hover::before {
+  position: absolute;
+  left: -100px;
+  top: -5px;
+  content: 'Click to edit';
+  padding: 10px;
+  background: rgb(31, 31, 31);
+  border-radius: 50%;
+  color:#0064e7;
+}
+
+.edit-popup {
+  position: fixed;
+  display: none;
+  border-radius: 10px;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: rgb(82, 82, 82);
+}
+.show {
+  display: block;
 }
