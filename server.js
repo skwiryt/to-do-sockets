@@ -3,7 +3,7 @@ const socket = require('socket.io');
 
 const app = express();
 
-const tasks = ['Shopping', 'Go out with a dog'];
+const tasks = [{id: 1, name: 'Shopping'}, {id:2, name: 'Go out with a dog'}];
 
 
 
@@ -26,7 +26,9 @@ io.on('connection', (socket) => {
     console.log('tasks: ', tasks);
   });
   socket.on('removeTask', (id) => {
-    tasks.splice(id, 1);
+    const index = tasks.findIndex(task => task.id === id);
+    tasks.splice(index, 1);
+    console.log('tasks: ', tasks);
     socket.broadcast.emit('removeTask', id);
   });
 
